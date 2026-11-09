@@ -1,4 +1,4 @@
-NVCC       = nvcc -gencode=arch=compute_70,code=sm_70
+NVCC       = nvcc -gencode=arch=compute_90,code=sm_90
 
 CUOPENMP   = -Xcompiler -fopenmp
 CUDA = /usr/local/cuda

@@ -14,6 +14,7 @@ include $(MAKE_DIR)/include_$(COMPILER).mk
 include $(MAKE_DIR)/include_NVCC.mk
 
 space := $(eval) $(eval)
+comma := ,
 ifneq ($(strip $(MODES_SPECIALIZED)),0)
   MODES_SPECIALIZED := 0,$(MODES_SPECIALIZED)
 endif
@@ -66,7 +67,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 $(BUILD_DIR)/%.cuo: $(SRC_DIR)/%.cu
 	@echo "===>  Device COMPILE  $@"
-	$(NVCC) -ccbin=$(CXX) -c $(DEFINES) $(OPTIONS) $(INCLUDES) $(NVCCFLAGS) $(NVCCLFLAGS) $(NVCCINCLUDES) $< -o $@	
+	$(NVCC) -ccbin=$(CXX) -c $(subst $(comma),\\$(comma),$(DEFINES)) $(OPTIONS) $(INCLUDES) $(NVCCFLAGS) $(NVCCLFLAGS) $(NVCCINCLUDES) $< -o $@	
 
 $(BUILD_DIR)/%.s:  $(SRC_DIR)/%.c
 	@echo "===>  GENERATE ASM  $@"
