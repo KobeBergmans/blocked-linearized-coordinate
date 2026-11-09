@@ -5,7 +5,7 @@
 #################################################################
 
 # Supported: ICC, GCC
-COMPILER = ICC
+COMPILER = GCC
 # Supported: MKL, OPENBLAS
 BLAS_LIBRARY = MKL
 
